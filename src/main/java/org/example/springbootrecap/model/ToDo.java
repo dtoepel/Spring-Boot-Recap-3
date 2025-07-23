@@ -1,4 +1,4 @@
 package org.example.springbootrecap.model;
 
-public class ToDo {
+public record ToDo(String id, String description, ToDoStatus status) {
 }

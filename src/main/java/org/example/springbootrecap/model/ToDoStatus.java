@@ -1,4 +1,5 @@
 package org.example.springbootrecap.model;
 
-public class ToDoStatus {
+public enum ToDoStatus {
+    OPEN, IN_PROGRESS, DONE
 }
