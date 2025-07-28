@@ -23,6 +23,19 @@ class ToDoControllerTest {
     private ToDoRepo repo;
 
     @Test
+    void pointlessGet() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/cars/fiat"))
+                .andExpect(MockMvcResultMatchers.status().is(474));
+    }
+
+    @Test
+    void getByUnknownId() throws Exception {
+        repo.deleteAll();
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/todo/13"))
+                .andExpect(MockMvcResultMatchers.status().is4xxClientError());
+    }
+
+    @Test
     void undoRedoTest() throws Exception {
         String json = """
             {

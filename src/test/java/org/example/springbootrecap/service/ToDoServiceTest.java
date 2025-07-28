@@ -6,8 +6,6 @@ import org.example.springbootrecap.repository.ToDoRepo;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import java.util.List;
-import java.util.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,7 +15,7 @@ class ToDoServiceTest {
     void emptyUndoTest() {
         UndoRedoStack undoRedoStack = new UndoRedoStack();
         ToDoRepo repo = Mockito.mock(ToDoRepo.class);
-        ToDoService service = new ToDoService(repo, undoRedoStack);
+        ToDoService service = new ToDoService(repo, undoRedoStack, null, "");
 
         /* force error...
         ToDo todo = new ToDo("foo", "Foodoo....", ToDoStatus.OPEN);
@@ -32,7 +30,7 @@ class ToDoServiceTest {
     void filledUndoTest() {
         UndoRedoStack undoRedoStack = new UndoRedoStack();
         ToDoRepo repo = Mockito.mock(ToDoRepo.class);
-        ToDoService service = new ToDoService(repo, undoRedoStack);
+        ToDoService service = new ToDoService(repo, undoRedoStack, null, "");
         ToDo todo = new ToDo("foo", "Foooooo....", ToDoStatus.OPEN);
         undoRedoStack.logAdd(todo);
         //Mockito.when(repo.findAll()).thenReturn(new Vector<AsterixCharacter>());
